@@ -1,0 +1,81 @@
+#
+# Vision configuration common for all android devices
+# BSP : used in system/core/rootdir/init.rc
+#
+on boot
+
+    # add by QKD 20160713 for gesture
+    chown system system /sys/ctp/ctp_func/gesture
+    chown system system /sys/ctp/ctp_func/tpenable
+    # add for fwupdate
+    chown system system /sys/ctp/ctp_update/fwupdate
+
+    #BSP: Added by QKD 20161116 for BreathLight START  @{
+    chown system system sys/class/leds/red/led_time
+    chown system system sys/class/leds/green/led_time
+    chown system system sys/class/leds/blue/led_time
+    chown system system sys/class/leds/red/max_brightness
+    chown system system sys/class/leds/green/max_brightness
+    chown system system sys/class/leds/blue/max_brightness
+    #BSP: 20161116 for BreathLight END  @}
+
+    #BSP: Added by QKD 20161216 for BreathLight double START  @{
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/pwm_us
+    #BSP: 20161216 BreathLight double END  @}
+
+    # zhouwei add
+    chown system system /sys/class/leds/flashlight/brightness
+    chmod 0660 /sys/class/leds/flashlight/brightness
+    #bsp:Added by zhoupeng 20161125 for glove mode @{
+    chown system system /sys/ctp/ctp_func/glove  
+    #BSP: 20161125 for glove mode END  @}  
+
+#end
+
+###BSP:add for preload picture ZJH 20170227
+service preload-sh /system/bin/sh /system/etc/init.preload.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+on property:dev.bootcomplete=1
+    start preload-sh
+
+### BSP: preload color config files for QDCM @{
+service preload-cc-sh /system/bin/sh /system/etc/init.preload.colorconfig.sh
+    class late_start
+    user root
+    oneshot
+### BSP: preload color config files for QDCM @}
+
+###BSP: sunzhe add for clear cache @{
+service clearCache /system/bin/sh /system/etc/clear_cache.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+###BSP:add diagagentd @{
+service diagagentd /system/bin/diagagentd
+    class main
+    user system
+    group system
+###@}
+###BSP: xiuping add for bsp @{
+service cleanMemory /system/bin/sh /system/etc/clean_memory.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:sys.clean.memory=1
+    start cleanMemory
+    setprop sys.clean.memory 0
+###@}
+on property:sys.clear.cachebackup=1
+    start clearCache
+    setprop sys.clear.cachebackup 0
+###@}    

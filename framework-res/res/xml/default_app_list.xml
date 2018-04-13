@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<applists>
+    <applist id="mms">com.android.mms</applist>
+    <applist id="browser">com.android.browser</applist>
+    <applist id="music">com.hmct.music</applist>
+    <applist id="launcher">com.hmct.vision</applist>
+    <applist id="camera">com.android.camera2</applist>
+    <applist id="mail">com.android.email</applist>
+    <applist id="dialer">com.android.contacts</applist>
+    <applist id="gallery">com.android.gallery3d</applist>
+</applists>

@@ -1,0 +1,415 @@
+# Copyright (C) 2015 The Android Open Source Project
+#
+# Sensors configuration common for all android devices
+#
+
+on post-fs-data
+	mkdir /data/sensoradjust 0777 system system
+	mkdir /data/data/factory 0777 system system
+
+on boot
+# modify sensor node permission
+    chown system system /sys/class/sensors/accelerometer/enable
+	chmod 0660 /sys/class/sensors/accelerometer/enable
+    chown system system /sys/class/sensors/accelerometer/poll_delay
+	chmod 0660 /sys/class/sensors/accelerometer/poll_delay
+    chown system system /sys/class/sensors/accelerometer/name
+	chmod 0440 /sys/class/sensors/accelerometer/name
+    chown system system /sys/class/sensors/accelerometer/vendor
+	chmod 0440 /sys/class/sensors/accelerometer/vendor
+    chown system system /sys/class/sensors/accelerometer/version
+	chmod 0440 /sys/class/sensors/accelerometer/version
+    chown system system /sys/class/sensors/accelerometer/handle
+	chmod 0440 /sys/class/sensors/accelerometer/handle
+    chown system system /sys/class/sensors/accelerometer/type
+	chmod 0440 /sys/class/sensors/accelerometer/type
+    chown system system /sys/class/sensors/accelerometer/max_range
+	chmod 0440 /sys/class/sensors/accelerometer/max_range
+    chown system system /sys/class/sensors/accelerometer/resolution
+	chmod 0440 /sys/class/sensors/accelerometer/resolution
+    chown system system /sys/class/sensors/accelerometer/sensor_power
+	chmod 0440 /sys/class/sensors/accelerometer/sensor_power
+    chown system system /sys/class/sensors/accelerometer/min_delay
+	chmod 0440 /sys/class/sensors/accelerometer/min_delay
+    chown system system /sys/class/sensors/accelerometer/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/accelerometer/fifo_reserved_event_count
+    chown system system /sys/class/sensors/accelerometer/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/accelerometer/fifo_max_event_count
+    chown system system /sys/class/sensors/accelerometer/max_delay
+	chmod 0440 /sys/class/sensors/accelerometer/max_delay
+    chown system system /sys/class/sensors/accelerometer/flags
+	chmod 0440 /sys/class/sensors/accelerometer/flags
+    chown system system /sys/class/sensors/accelerometer/enable_wakeup
+	chmod 0660 /sys/class/sensors/accelerometer/enable_wakeup
+    chown system system /sys/class/sensors/accelerometer/self_test
+	chmod 0440 /sys/class/sensors/accelerometer/self_test
+    chown system system /sys/class/sensors/accelerometer/max_latency
+	chmod 0660 /sys/class/sensors/accelerometer/max_latency
+    chown system system /sys/class/sensors/accelerometer/flush
+	chmod 0660 /sys/class/sensors/accelerometer/flush
+    chown system system /sys/class/sensors/accelerometer/calibrate
+	chmod 0660 /sys/class/sensors/accelerometer/calibrate
+
+    chown system system /sys/class/sensors/proximity/enable
+	chmod 0660 /sys/class/sensors/proximity/enable
+    chown system system /sys/class/sensors/proximity/poll_delay
+	chmod 0660 /sys/class/sensors/proximity/poll_delay
+    chown system system /sys/class/sensors/proximity/name
+	chmod 0440 /sys/class/sensors/proximity/name
+    chown system system /sys/class/sensors/proximity/vendor
+	chmod 0440 /sys/class/sensors/proximity/vendor
+    chown system system /sys/class/sensors/proximity/version
+	chmod 0440 /sys/class/sensors/proximity/version
+    chown system system /sys/class/sensors/proximity/handle
+	chmod 0440 /sys/class/sensors/proximity/handle
+    chown system system /sys/class/sensors/proximity/type
+	chmod 0440 /sys/class/sensors/proximity/type
+    chown system system /sys/class/sensors/proximity/max_range
+	chmod 0440 /sys/class/sensors/proximity/max_range
+    chown system system /sys/class/sensors/proximity/resolution
+	chmod 0440 /sys/class/sensors/proximity/resolution
+    chown system system /sys/class/sensors/proximity/sensor_power
+	chmod 0440 /sys/class/sensors/proximity/sensor_power
+    chown system system /sys/class/sensors/proximity/min_delay
+	chmod 0440 /sys/class/sensors/proximity/min_delay
+    chown system system /sys/class/sensors/proximity/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/proximity/fifo_reserved_event_count
+    chown system system /sys/class/sensors/proximity/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/proximity/fifo_max_event_count
+    chown system system /sys/class/sensors/proximity/max_delay
+	chmod 0440 /sys/class/sensors/proximity/max_delay
+    chown system system /sys/class/sensors/proximity/flags
+	chmod 0440 /sys/class/sensors/proximity/flags
+    chown system system /sys/class/sensors/proximity/enable_wakeup
+	chmod 0660 /sys/class/sensors/proximity/enable_wakeup
+    chown system system /sys/class/sensors/proximity/self_test
+	chmod 0440 /sys/class/sensors/proximity/self_test
+    chown system system /sys/class/sensors/proximity/max_latency
+	chmod 0660 /sys/class/sensors/proximity/max_latency
+    chown system system /sys/class/sensors/proximity/flush
+	chmod 0660 /sys/class/sensors/proximity/flush
+    chown system system /sys/class/sensors/proximity/calibrate
+	chmod 0660 /sys/class/sensors/proximity/calibrate
+    chown system system /sys/class/sensors/proximity/ps_data
+	chmod 0440 /sys/class/sensors/proximity/ps_data
+    chown system system /sys/class/sensors/proximity/ps_thd_close
+	chmod 0660 /sys/class/sensors/proximity/ps_thd_close
+    chown system system /sys/class/sensors/proximity/ps_thd_away
+	chmod 0660 /sys/class/sensors/proximity/ps_thd_away
+    chown system system /sys/class/sensors/proximity/ps_ppcount
+	chmod 0660 /sys/class/sensors/proximity/ps_ppcount
+    chown system system /sys/class/sensors/proximity/ps_pgain
+	chmod 0660 /sys/class/sensors/proximity/ps_pgain
+    chown system system /sys/class/sensors/proximity/ps_pdrive
+	chmod 0660 /sys/class/sensors/proximity/ps_pdrive
+    chown system system /sys/class/sensors/proximity/ps_crosstalk_maxthd
+	chmod 0660 /sys/class/sensors/proximity/ps_crosstalk_maxthd
+    chown system system /sys/class/sensors/proximity/ps_canc
+	chmod 0440 /sys/class/sensors/proximity/ps_canc
+
+	chown system system /sys/class/sensors/light/enable
+	chmod 0660 /sys/class/sensors/light/enable
+    chown system system /sys/class/sensors/light/poll_delay
+	chmod 0660 /sys/class/sensors/light/poll_delay
+    chown system system /sys/class/sensors/light/name
+	chmod 0440 /sys/class/sensors/light/name
+    chown system system /sys/class/sensors/light/vendor
+	chmod 0440 /sys/class/sensors/light/vendor
+    chown system system /sys/class/sensors/light/version
+	chmod 0440 /sys/class/sensors/light/version
+    chown system system /sys/class/sensors/light/handle
+	chmod 0440 /sys/class/sensors/light/handle
+    chown system system /sys/class/sensors/light/type
+	chmod 0440 /sys/class/sensors/light/type
+    chown system system /sys/class/sensors/light/max_range
+	chmod 0440 /sys/class/sensors/light/max_range
+    chown system system /sys/class/sensors/light/resolution
+	chmod 0440 /sys/class/sensors/light/resolution
+    chown system system /sys/class/sensors/light/sensor_power
+	chmod 0440 /sys/class/sensors/light/sensor_power
+    chown system system /sys/class/sensors/light/min_delay
+	chmod 0440 /sys/class/sensors/light/min_delay
+    chown system system /sys/class/sensors/light/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/light/fifo_reserved_event_count
+    chown system system /sys/class/sensors/light/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/light/fifo_max_event_count
+    chown system system /sys/class/sensors/light/max_delay
+	chmod 0440 /sys/class/sensors/light/max_delay
+    chown system system /sys/class/sensors/light/flags
+	chmod 0440 /sys/class/sensors/light/flags
+    chown system system /sys/class/sensors/light/enable_wakeup
+	chmod 0660 /sys/class/sensors/light/enable_wakeup
+    chown system system /sys/class/sensors/light/self_test
+	chmod 0440 /sys/class/sensors/light/self_test
+    chown system system /sys/class/sensors/light/max_latency
+	chmod 0660 /sys/class/sensors/light/max_latency
+    chown system system /sys/class/sensors/light/flush
+	chmod 0660 /sys/class/sensors/light/flush
+    chown system system /sys/class/sensors/light/calibrate
+	chmod 0660 /sys/class/sensors/light/calibrate
+
+    chown system system /sys/class/sensors/compass/enable
+	chmod 0660 /sys/class/sensors/compass/enable
+    chown system system /sys/class/sensors/compass/poll_delay
+	chmod 0660 /sys/class/sensors/compass/poll_delay
+    chown system system /sys/class/sensors/compass/name
+	chmod 0440 /sys/class/sensors/compass/name
+    chown system system /sys/class/sensors/compass/vendor
+	chmod 0440 /sys/class/sensors/compass/vendor
+    chown system system /sys/class/sensors/compass/version
+	chmod 0440 /sys/class/sensors/compass/version
+    chown system system /sys/class/sensors/compass/handle
+	chmod 0440 /sys/class/sensors/compass/handle
+    chown system system /sys/class/sensors/compass/type
+	chmod 0440 /sys/class/sensors/compass/type
+    chown system system /sys/class/sensors/compass/max_range
+	chmod 0440 /sys/class/sensors/compass/max_range
+    chown system system /sys/class/sensors/compass/resolution
+	chmod 0440 /sys/class/sensors/compass/resolution
+    chown system system /sys/class/sensors/compass/sensor_power
+	chmod 0440 /sys/class/sensors/compass/sensor_power
+    chown system system /sys/class/sensors/compass/min_delay
+	chmod 0440 /sys/class/sensors/compass/min_delay
+    chown system system /sys/class/sensors/compass/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/compass/fifo_reserved_event_count
+    chown system system /sys/class/sensors/compass/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/compass/fifo_max_event_count
+    chown system system /sys/class/sensors/compass/max_delay
+	chmod 0440 /sys/class/sensors/compass/max_delay
+    chown system system /sys/class/sensors/compass/flags
+	chmod 0440 /sys/class/sensors/compass/flags
+    chown system system /sys/class/sensors/compass/enable_wakeup
+	chmod 0660 /sys/class/sensors/compass/enable_wakeup
+    chown system system /sys/class/sensors/compass/self_test
+	chmod 0440 /sys/class/sensors/compass/self_test
+    chown system system /sys/class/sensors/compass/max_latency
+	chmod 0660 /sys/class/sensors/compass/max_latency
+    chown system system /sys/class/sensors/compass/flush
+	chmod 0660 /sys/class/sensors/compass/flush
+    chown system system /sys/class/sensors/compass/calibrate
+	chmod 0660 /sys/class/sensors/compass/calibrate
+
+    chown system system /sys/class/sensors/orientation/enable
+	chmod 0660 /sys/class/sensors/orientation/enable
+    chown system system /sys/class/sensors/orientation/poll_delay
+	chmod 0660 /sys/class/sensors/orientation/poll_delay
+    chown system system /sys/class/sensors/orientation/name
+	chmod 0440 /sys/class/sensors/orientation/name
+    chown system system /sys/class/sensors/orientation/vendor
+	chmod 0440 /sys/class/sensors/orientation/vendor
+    chown system system /sys/class/sensors/orientation/version
+	chmod 0440 /sys/class/sensors/orientation/version
+    chown system system /sys/class/sensors/orientation/handle
+	chmod 0440 /sys/class/sensors/orientation/handle
+    chown system system /sys/class/sensors/orientation/type
+	chmod 0440 /sys/class/sensors/orientation/type
+    chown system system /sys/class/sensors/orientation/max_range
+	chmod 0440 /sys/class/sensors/orientation/max_range
+    chown system system /sys/class/sensors/orientation/resolution
+	chmod 0440 /sys/class/sensors/orientation/resolution
+    chown system system /sys/class/sensors/orientation/sensor_power
+	chmod 0440 /sys/class/sensors/orientation/sensor_power
+    chown system system /sys/class/sensors/orientation/min_delay
+	chmod 0440 /sys/class/sensors/orientation/min_delay
+    chown system system /sys/class/sensors/orientation/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/orientation/fifo_reserved_event_count
+    chown system system /sys/class/sensors/orientation/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/orientation/fifo_max_event_count
+    chown system system /sys/class/sensors/orientation/max_delay
+	chmod 0440 /sys/class/sensors/orientation/max_delay
+    chown system system /sys/class/sensors/orientation/flags
+	chmod 0440 /sys/class/sensors/orientation/flags
+    chown system system /sys/class/sensors/orientation/enable_wakeup
+	chmod 0660 /sys/class/sensors/orientation/enable_wakeup
+    chown system system /sys/class/sensors/orientation/self_test
+	chmod 0440 /sys/class/sensors/orientation/self_test
+    chown system system /sys/class/sensors/orientation/max_latency
+	chmod 0660 /sys/class/sensors/orientation/max_latency
+    chown system system /sys/class/sensors/orientation/flush
+	chmod 0660 /sys/class/sensors/orientation/flush
+    chown system system /sys/class/sensors/orientation/calibrate
+	chmod 0660 /sys/class/sensors/orientation/calibrate
+
+    chown system system /sys/class/sensors/gyroscope/enable
+	chmod 0660 /sys/class/sensors/gyroscope/enable
+    chown system system /sys/class/sensors/gyroscope/poll_delay
+	chmod 0660 /sys/class/sensors/gyroscope/poll_delay
+    chown system system /sys/class/sensors/gyroscope/name
+	chmod 0440 /sys/class/sensors/gyroscope/name
+    chown system system /sys/class/sensors/gyroscope/vendor
+	chmod 0440 /sys/class/sensors/gyroscope/vendor
+    chown system system /sys/class/sensors/gyroscope/version
+	chmod 0440 /sys/class/sensors/gyroscope/version
+    chown system system /sys/class/sensors/gyroscope/handle
+	chmod 0440 /sys/class/sensors/gyroscope/handle
+    chown system system /sys/class/sensors/gyroscope/type
+	chmod 0440 /sys/class/sensors/gyroscope/type
+    chown system system /sys/class/sensors/gyroscope/max_range
+	chmod 0440 /sys/class/sensors/gyroscope/max_range
+    chown system system /sys/class/sensors/gyroscope/resolution
+	chmod 0440 /sys/class/sensors/gyroscope/resolution
+    chown system system /sys/class/sensors/gyroscope/sensor_power
+	chmod 0440 /sys/class/sensors/gyroscope/sensor_power
+    chown system system /sys/class/sensors/gyroscope/min_delay
+	chmod 0440 /sys/class/sensors/gyroscope/min_delay
+    chown system system /sys/class/sensors/gyroscope/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/gyroscope/fifo_reserved_event_count
+    chown system system /sys/class/sensors/gyroscope/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/gyroscope/fifo_max_event_count
+    chown system system /sys/class/sensors/gyroscope/max_delay
+	chmod 0440 /sys/class/sensors/gyroscope/max_delay
+    chown system system /sys/class/sensors/gyroscope/flags
+	chmod 0440 /sys/class/sensors/gyroscope/flags
+    chown system system /sys/class/sensors/gyroscope/enable_wakeup
+	chmod 0660 /sys/class/sensors/gyroscope/enable_wakeup
+    chown system system /sys/class/sensors/gyroscope/self_test
+	chmod 0440 /sys/class/sensors/gyroscope/self_test
+    chown system system /sys/class/sensors/gyroscope/max_latency
+	chmod 0660 /sys/class/sensors/gyroscope/max_latency
+    chown system system /sys/class/sensors/gyroscope/flush
+	chmod 0660 /sys/class/sensors/gyroscope/flush
+    chown system system /sys/class/sensors/gyroscope/calibrate
+	chmod 0660 /sys/class/sensors/gyroscope/calibrate
+
+	### BSP:add for gas sensor@{
+	chown system system /sys/class/sensors/gas/enable
+	chmod 0660 /sys/class/sensors/gas/enable
+    chown system system /sys/class/sensors/gas/poll_delay
+	chmod 0660 /sys/class/sensors/gas/poll_delay
+    chown system system /sys/class/sensors/gas/name
+	chmod 0440 /sys/class/sensors/gas/name
+    chown system system /sys/class/sensors/gas/vendor
+	chmod 0440 /sys/class/sensors/gas/vendor
+    chown system system /sys/class/sensors/gas/version
+	chmod 0440 /sys/class/sensors/gas/version
+    chown system system /sys/class/sensors/gas/handle
+	chmod 0440 /sys/class/sensors/gas/handle
+    chown system system /sys/class/sensors/gas/type
+	chmod 0440 /sys/class/sensors/gas/type
+    chown system system /sys/class/sensors/gas/max_range
+	chmod 0440 /sys/class/sensors/gas/max_range
+    chown system system /sys/class/sensors/gas/resolution
+	chmod 0440 /sys/class/sensors/gas/resolution
+    chown system system /sys/class/sensors/gas/sensor_power
+	chmod 0440 /sys/class/sensors/gas/sensor_power
+    chown system system /sys/class/sensors/gas/min_delay
+	chmod 0440 /sys/class/sensors/gas/min_delay
+    chown system system /sys/class/sensors/gas/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/gas/fifo_reserved_event_count
+    chown system system /sys/class/sensors/gas/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/gas/fifo_max_event_count
+    chown system system /sys/class/sensors/gas/max_delay
+	chmod 0440 /sys/class/sensors/gas/max_delay
+    chown system system /sys/class/sensors/gas/flags
+	chmod 0440 /sys/class/sensors/gas/flags
+    chown system system /sys/class/sensors/gas/enable_wakeup
+	chmod 0660 /sys/class/sensors/gas/enable_wakeup
+    chown system system /sys/class/sensors/gas/self_test
+	chmod 0440 /sys/class/sensors/gas/self_test
+    chown system system /sys/class/sensors/gas/max_latency
+	chmod 0660 /sys/class/sensors/gas/max_latency
+    chown system system /sys/class/sensors/gas/flush
+	chmod 0660 /sys/class/sensors/gas/flush
+    chown system system /sys/class/sensors/gas/calibrate
+	chmod 0660 /sys/class/sensors/gas/calibrate
+	###@}
+	### BSP:add temperature & humidity sys node for gas sensor@{
+	chown system system /sys/class/sensors/gas/tem_data
+	chmod 0660 /sys/class/sensors/gas/tem_data
+	chown system system /sys/class/sensors/gas/hum_data
+	chmod 0660 /sys/class/sensors/gas/hum_data
+	###@}
+	### BSP:add resistance & baseline sys node for gas sensor@{
+	chown system system /sys/class/sensors/gas/resistance
+	chmod 0440 /sys/class/sensors/gas/resistance
+	chown system system /sys/class/sensors/gas/baseline
+	chmod 0440 /sys/class/sensors/gas/baseline
+	###@}
+
+### BSP:add for relative_humidity and ambient_temperature sensors@{
+    chown system system /sys/class/sensors/relative_humidity/enable
+	chmod 0660 /sys/class/sensors/relative_humidity/enable
+    chown system system /sys/class/sensors/relative_humidity/poll_delay
+	chmod 0660 /sys/class/sensors/relative_humidity/poll_delay
+    chown system system /sys/class/sensors/relative_humidity/name
+	chmod 0440 /sys/class/sensors/relative_humidity/name
+    chown system system /sys/class/sensors/relative_humidity/vendor
+	chmod 0440 /sys/class/sensors/relative_humidity/vendor
+    chown system system /sys/class/sensors/relative_humidity/version
+	chmod 0440 /sys/class/sensors/relative_humidity/version
+    chown system system /sys/class/sensors/relative_humidity/handle
+	chmod 0440 /sys/class/sensors/relative_humidity/handle
+    chown system system /sys/class/sensors/relative_humidity/type
+	chmod 0440 /sys/class/sensors/relative_humidity/type
+    chown system system /sys/class/sensors/relative_humidity/max_range
+	chmod 0440 /sys/class/sensors/relative_humidity/max_range
+    chown system system /sys/class/sensors/relative_humidity/resolution
+	chmod 0440 /sys/class/sensors/relative_humidity/resolution
+    chown system system /sys/class/sensors/relative_humidity/sensor_power
+	chmod 0440 /sys/class/sensors/relative_humidity/sensor_power
+    chown system system /sys/class/sensors/relative_humidity/min_delay
+	chmod 0440 /sys/class/sensors/relative_humidity/min_delay
+    chown system system /sys/class/sensors/relative_humidity/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/relative_humidity/fifo_reserved_event_count
+    chown system system /sys/class/sensors/relative_humidity/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/relative_humidity/fifo_max_event_count
+    chown system system /sys/class/sensors/relative_humidity/max_delay
+	chmod 0440 /sys/class/sensors/relative_humidity/max_delay
+    chown system system /sys/class/sensors/relative_humidity/flags
+	chmod 0440 /sys/class/sensors/relative_humidity/flags
+    chown system system /sys/class/sensors/relative_humidity/enable_wakeup
+	chmod 0660 /sys/class/sensors/relative_humidity/enable_wakeup
+    chown system system /sys/class/sensors/relative_humidity/self_test
+	chmod 0440 /sys/class/sensors/relative_humidity/self_test
+    chown system system /sys/class/sensors/relative_humidity/max_latency
+	chmod 0660 /sys/class/sensors/relative_humidity/max_latency
+    chown system system /sys/class/sensors/relative_humidity/flush
+	chmod 0660 /sys/class/sensors/relative_humidity/flush
+    chown system system /sys/class/sensors/relative_humidity/calibrate
+	chmod 0660 /sys/class/sensors/relative_humidity/calibrate
+    chown system system /sys/class/sensors/relative_humidity/h_data
+	chmod 0440 /sys/class/sensors/relative_humidity/h_data
+
+    chown system system /sys/class/sensors/ambient_temperature/enable
+	chmod 0660 /sys/class/sensors/ambient_temperature/enable
+    chown system system /sys/class/sensors/ambient_temperature/poll_delay
+	chmod 0660 /sys/class/sensors/ambient_temperature/poll_delay
+    chown system system /sys/class/sensors/ambient_temperature/name
+	chmod 0440 /sys/class/sensors/ambient_temperature/name
+    chown system system /sys/class/sensors/ambient_temperature/vendor
+	chmod 0440 /sys/class/sensors/ambient_temperature/vendor
+    chown system system /sys/class/sensors/ambient_temperature/version
+	chmod 0440 /sys/class/sensors/ambient_temperature/version
+    chown system system /sys/class/sensors/ambient_temperature/handle
+	chmod 0440 /sys/class/sensors/ambient_temperature/handle
+    chown system system /sys/class/sensors/ambient_temperature/type
+	chmod 0440 /sys/class/sensors/ambient_temperature/type
+    chown system system /sys/class/sensors/ambient_temperature/max_range
+	chmod 0440 /sys/class/sensors/ambient_temperature/max_range
+    chown system system /sys/class/sensors/ambient_temperature/resolution
+	chmod 0440 /sys/class/sensors/ambient_temperature/resolution
+    chown system system /sys/class/sensors/ambient_temperature/sensor_power
+	chmod 0440 /sys/class/sensors/ambient_temperature/sensor_power
+    chown system system /sys/class/sensors/ambient_temperature/min_delay
+	chmod 0440 /sys/class/sensors/ambient_temperature/min_delay
+    chown system system /sys/class/sensors/ambient_temperature/fifo_reserved_event_count
+	chmod 0440 /sys/class/sensors/ambient_temperature/fifo_reserved_event_count
+    chown system system /sys/class/sensors/ambient_temperature/fifo_max_event_count
+	chmod 0440 /sys/class/sensors/ambient_temperature/fifo_max_event_count
+    chown system system /sys/class/sensors/ambient_temperature/max_delay
+	chmod 0440 /sys/class/sensors/ambient_temperature/max_delay
+    chown system system /sys/class/sensors/ambient_temperature/flags
+	chmod 0440 /sys/class/sensors/ambient_temperature/flags
+    chown system system /sys/class/sensors/ambient_temperature/enable_wakeup
+	chmod 0660 /sys/class/sensors/ambient_temperature/enable_wakeup
+    chown system system /sys/class/sensors/ambient_temperature/self_test
+	chmod 0440 /sys/class/sensors/ambient_temperature/self_test
+    chown system system /sys/class/sensors/ambient_temperature/max_latency
+	chmod 0660 /sys/class/sensors/ambient_temperature/max_latency
+    chown system system /sys/class/sensors/ambient_temperature/flush
+	chmod 0660 /sys/class/sensors/ambient_temperature/flush
+    chown system system /sys/class/sensors/ambient_temperature/calibrate
+	chmod 0660 /sys/class/sensors/ambient_temperature/calibrate
+    chown system system /sys/class/sensors/ambient_temperature/t_data
+	chmod 0440 /sys/class/sensors/ambient_temperature/t_data
+###@}

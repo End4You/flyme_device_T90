@@ -1,0 +1,26 @@
+# Haixin T90 product .rc configure
+
+on boot
+    ###Product: add for goodix fingerprint by zxl@{
+    chown system system /dev/goodix_fp
+    chmod 0644 /dev/goodix_fp
+    ###@}
+
+
+### Product: add for goodix fingerprint daemon by zxl@{
+service gx_fpd /system/bin/gx_fpd
+    class late_start
+    user root
+    group root system
+### @}
+
+###Product: start fingerprintd by zxl @{
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+###@}
+
+###Product:add by zxl for daemon that talk with TZ @{
+service tcbd /system/bin/tcbd
+    class main
+###@}

@@ -1,0 +1,269 @@
+# Copyright (c) 2009-2012, 2014, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of The Linux Foundation nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+on post-fs-data
+    mkdir /cache/factory/ 0770 system system
+
+service ptt_socket_app /system/bin/ptt_socket_app -d
+    class main
+    user system
+    group system
+    oneshot
+    disabled
+
+service diag_atc /system/bin/diag_atc
+    class late_start
+    user root
+    group root
+    oneshot
+
+service diag_ext /system/bin/diag_ext
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:persist.sys.write.address=1
+    start diag_ext
+
+service chmod_diag_block /system/bin/sh /system/etc/chmod_diag_block.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service chmod_smd_device /system/bin/sh /system/etc/chmod_smd_device.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service test_bluetooth /system/bin/sh /system/etc/test_bluetooth.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service ptt_hmct /system/bin/ptt_socket_app -f
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service bttestmode /system/bin/sh /system/etc/bluetooth_test_mode.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service wifiroamon /system/bin/sh /system/etc/set_wlan_powersave_roammode.sh "on"
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service wifiroamoff /system/bin/sh /system/etc/set_wlan_powersave_roammode.sh "off"
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service wifitestmode /system/bin/sh /system/etc/load_wifi_ftm.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service ftmhostap /system/bin/sh /system/etc/ftm_open_soft_ap.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service powerofffate /system/bin/sh /etc/poweroffFate.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+service bt_test_receive /system/bin/sh /system/etc/bt_test_receive.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service bt_test_transmit /system/bin/sh /system/etc/bt_test_transmit.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service wifi_802_11b /system/bin/sh /system/etc/wifi_802_11b.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service wifi_802_11g /system/bin/sh /system/etc/wifi_802_11g.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+service save_app_log /system/bin/sh /system/etc/saveAppLog.sh
+    class late_start
+    user root
+    group root
+    seclabel u:r:ft_shellexec:s0
+    disabled
+    oneshot
+
+###BSP:add for svaing recovery log to internal@{
+service save_rec_log /system/bin/sh /system/etc/saveRecoveryLog.sh
+    class late_start
+    user root
+    group root
+    seclabel u:r:recovery_shellexec:s0
+    disabled
+    oneshot
+###@}
+
+###BSP:add for svaing recovery log to internal@{
+on property:persist.sys.recoverylog=1
+    start save_rec_log
+###@}
+
+service save_kernel_log /system/bin/sh /system/etc/saveKernelLog.sh
+    class late_start
+    user root
+    group root
+    seclabel u:r:ft_shellexec:s0
+    disabled
+    oneshot
+
+on property:ro.factorytest=2
+    #setprop factory.reload_policy 1
+    chmod 0666 /sys/ctp/ctp_update/fwbinupdate
+    chmod 0666 /sys/ctp/ctp_test/testconfig
+    chmod 0666 /sys/class/leds/flashlight/brightness
+    chmod 0666 /sys/class/power_supply/usb-parallel/charging_enabled
+    chmod 666 /proc/ftxxxx-debug
+    chmod 666 /dev/i2c*
+    chmod 777 /dev/ft_rw_iic_drv
+    chmod 666 /sys/class/power_supply/bms/update_now
+    chmod 666 /sys/factory_spk_test/speakertest
+    chmod 666 /sys/class/leds/aw2013_right_red/brightness
+    chmod 666 /sys/class/leds/aw2013_right_green/brightness
+    chmod 666 /sys/class/leds/aw2013_right_blue/brightness
+    chmod 666 /sys/class/leds/ir_laser/brightness
+    chmod 666 /sys/class/voicep/dbmdx/va_usecase_name
+    chmod 666 /sys/class/voicep/dbmdx/va_usecase
+    chmod 666 /d/sgm40561_debug/small_bat_sel
+    chmod 666 /sys/gps_ctrl/beidou_on
+    chown system system /sys/kernel/debug/msm_cam_fate/cam_fate
+    chown system system /sys/otg_ctrl/usbid_ctrl_flag
+    start createdir
+    start chmod_diag_block
+    start save_app_log
+    start save_kernel_log
+
+on property:persist.sys.access.diag=1
+    start chmod_diag_block
+
+on property:debug.sys.hmct.safekeytest=1
+    start safekeytest
+
+service safekeytest /system/bin/safekeytest
+    class late_start
+    user root
+    group root
+    oneshot
+    disabled
+
+service createdir /system/bin/sh /system/etc/createFactoryLogDir.sh
+    class late_start
+    user root
+    group root
+    seclabel u:r:ft_shellexec:s0
+    disabled
+    oneshot
+
+on property:persist.sys.systemtest.debug=1
+    write /sys/debug_control/debug_flag 1
+
+###gaocunxin add for F2325-196 @{
+on property:debug.sys.clrsysdebug=1
+    write /sys/debug_control/debug_flag 0
+###@}
+
+on property:persist.sys.hmct.chg.expired=1
+    write /sys/class/power_supply/battery/safety_timer_enabled 1
+on property:persist.sys.hmct.chg.expired=0
+    write /sys/class/power_supply/battery/safety_timer_enabled 0
+#zhangjingxin add begin for cita2 charging control 20160527 
+on property:sys.hmct.chg.enabled=1
+    write /sys/class/power_supply/battery/charging_enabled 1
+on property:sys.hmct.chg.enabled=0
+    write /sys/class/power_supply/battery/charging_enabled 0
+#zhangjingxin add end
+
+###xuzhongyuan add for ftmode wifi test@{
+service iwpriv_cntl /system/bin/sh /system/etc/iwpriv_cntl.sh
+    class late_start
+    user root
+    group root
+    disabled
+###@}
+
+###gaocunxin add for nxp smartpa cali @{
+service nxp_clr_flag /system/bin/sh /system/etc/nxp_clear_cali_flag.sh
+    class late_start
+    user root
+    group root
+    seclabel u:r:ft_shellexec:s0
+    disabled
+
+service nxp_do_cali /system/bin/sh /system/etc/nxp_do_cali.sh
+    class late_start
+    user root
+    group root
+    seclabel u:r:ft_shellexec:s0
+    disabled
+###@}

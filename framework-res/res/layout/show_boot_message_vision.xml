@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/logo" android:background="@drawable/show_boot_message_logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="92.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/boot_message_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="270.0dip" android:layout_centerHorizontal="true" />
+    <ProgressBar android:id="@id/progress_bar" android:visibility="gone" android:layout_width="270.0dip" android:layout_height="1.0dip" android:layout_marginTop="450.0dip" android:progressDrawable="@drawable/boot_message_progress_style" android:layout_centerHorizontal="true" style="@android:style/Widget.Holo.ProgressBar.Horizontal" />
+</RelativeLayout>

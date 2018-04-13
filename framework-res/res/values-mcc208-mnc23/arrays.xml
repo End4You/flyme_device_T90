@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="config_tether_apndata">
+        <item>[ApnSettingV3]SFR option modem,websfr,,,,,,,,,208,23,,DUN,,,true,0,,,,,,,gid,524D4F31</item>
+    </string-array>
+</resources>

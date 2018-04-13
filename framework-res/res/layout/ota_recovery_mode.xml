@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/logo" android:background="@drawable/recovery_logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="92.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="270.0dip" android:text="@string/recovery_message" android:layout_centerHorizontal="true" />
+    <ProgressBar android:id="@id/progress_bar" android:layout_width="270.0dip" android:layout_height="2.0dip" android:layout_marginTop="450.0dip" android:max="100" android:progressDrawable="@drawable/ota_uncrypt_progress" android:layout_centerHorizontal="true" style="@android:style/Widget.Holo.ProgressBar.Horizontal" />
+</RelativeLayout>
